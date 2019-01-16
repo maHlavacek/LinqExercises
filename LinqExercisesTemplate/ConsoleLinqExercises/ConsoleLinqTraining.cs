@@ -62,9 +62,12 @@ namespace ConsoleLinqExercises
             //Selektiere nur jene CDs die als Country UK eingetragen haben! (Groß/Kleinschreibung soll ignoriert werden)
             //Sorierung nach Company, bei gleicher Company soll nach CD-Titel sortiert werden.
 
-            IEnumerable<Cd> result = null;
+            IEnumerable<Cd> result = allCds.Where(loc => loc.Country.ToUpper() == "UK")
+                                    .OrderBy(orderByCompany => orderByCompany.Company)
+                                    .ThenBy(orderByTitle => orderByTitle.Title);
+                
 
-           PrintResult("Nur UK-CD´s", result);
+            PrintResult("Nur UK-CD´s", result);
 
 
             //Gebe die CD´s gruppiert nach Company aus. D.h. zuerst Company als Überschrift, gefolgt von allen Cd´s zur Company.
@@ -74,14 +77,15 @@ namespace ConsoleLinqExercises
             //    group cd by cd.Company into companyCds
             //    select companyCds;
 
-            IOrderedEnumerable<IGrouping<string, Cd>> groupedResult = null;
+            IOrderedEnumerable<IGrouping<string, Cd>> groupedResult = allCds.GroupBy(gB => gB.Company).OrderBy(g => g.Key);
 
             //GroupBy liefert eine Liste (von IGrouping Elementen) wobei jedes Element den gemeinsamen Key und wiederum eine Liste mit den Elementen beinhaltet
 
             PrintCaption("CD´s gruppiert nach Company");
             foreach (var companyCds in groupedResult)
             {
-                throw new NotImplementedException();
+                //Not ready now
+                companyCds.GroupBy(gb => gb.Company);
             }
 
             // Aggregatsmethoden
