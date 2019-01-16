@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<COMPANIES>
+  <COMPANY>
+    <NAME>Columbia</NAME>
+    <DIRECTOR>Walter Klein</DIRECTOR>
+    <FOUNDED>1930</FOUNDED>
+  </COMPANY>
+  <COMPANY>
+    <NAME>CBS Records</NAME>
+    <DIRECTOR>Günter Groß</DIRECTOR>
+    <FOUNDED>1960</FOUNDED>
+  </COMPANY>
+  <COMPANY>
+    <NAME>RCA</NAME>
+    <DIRECTOR>Luis Leither</DIRECTOR>
+    <FOUNDED>1939</FOUNDED>
+  </COMPANY>
+  <COMPANY>
+    <NAME>Virgin</NAME>
+    <DIRECTOR>Josh Munster</DIRECTOR>
+    <FOUNDED>1922</FOUNDED>
+  </COMPANY>
+  <COMPANY>
+    <NAME>Pickwick</NAME>
+    <DIRECTOR>Salma Nessi</DIRECTOR>
+    <FOUNDED>1975</FOUNDED>
+  </COMPANY>
+  <COMPANY>
+    <NAME>Polydor</NAME>
+    <DIRECTOR>Sarah Lewes</DIRECTOR>
+    <FOUNDED>2000</FOUNDED>
+  </COMPANY>
+  <COMPANY>
+    <NAME>Atlantic</NAME>
+    <DIRECTOR>Georg Rump</DIRECTOR>
+    <FOUNDED>1998</FOUNDED>
+  </COMPANY>
+  <COMPANY>
+    <NAME>Grammy</NAME>
+    <DIRECTOR>Joseph Mark</DIRECTOR>
+    <FOUNDED>1982</FOUNDED>
+  </COMPANY>
+  <COMPANY>
+    <NAME>Siren</NAME>
+    <DIRECTOR>Marc Leaderman</DIRECTOR>
+    <FOUNDED>1990</FOUNDED>
+  </COMPANY>
+  <COMPANY>
+    <NAME>EMI</NAME>
+    <DIRECTOR>Chelsey Leberman</DIRECTOR>
+    <FOUNDED>1943</FOUNDED>
+  </COMPANY>
+</COMPANIES>
