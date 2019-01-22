@@ -129,23 +129,37 @@ namespace ConsoleLinqExercises
             PrintResult("Jede zweite Zahl...", eachSecondNumber);
 
             //Es soll eine Liste mit: CD-Title, Company-Name, Company-Director ausgegeben werden
-            var joinExample = default(IEnumerable<Object>);
+            var joinExample = from cd in allCds
+                              join company in _controller.Companies on cd.Company equals company.Name
+                              orderby company.Director descending
+                              select new { cd.Title, cd.Company, company.Director };
+            
 
             PrintCaption("Title - Company-Name - Director");
             foreach (var item in joinExample)
             {
-                // Console.WriteLine("{0,-25} {1,-20} {2,-20}", item.Title, item.Company, item.Director);
+                 Console.WriteLine("{0,-25} {1,-20} {2,-20}", item.Title, item.Company, item.Director);
             }
 
             //Je Company-Director soll der Durchschnittspreis aller zu seiner Company gehörenden CD´s ausgegeben werden.
-            var joinAvgEx = default(IEnumerable<Object>);
+            var joinAvgEx = from cd in _controller.Cds
+                            join company in _controller.Companies
+                            on cd.Company equals company.Name
+                            group cd by company.Director into cdDir
+                            orderby cdDir.First().Company
+                            select new
+                            {
+                                Director = cdDir.Key,
+                                AvgPrice = cdDir.Average(c => c.Price)
+                            };
+
 
             PrintCaption("Avg-Price / CompanyDirector");
             foreach (var item in joinAvgEx)
             {
-                //Console.WriteLine("{0,-20} {1,6:f2}", item.Director, item.AvgPrice);
+                Console.WriteLine("{0,-20} {1,6:f2}", item.Director, item.AvgPrice);
             }
-
+            Console.ReadKey();
         }
 
         /// <summary>
