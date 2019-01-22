@@ -84,15 +84,19 @@ namespace ConsoleLinqExercises
             PrintCaption("CD´s gruppiert nach Company");
             foreach (var companyCds in groupedResult)
             {
-                //Not ready now
-                companyCds.GroupBy(gb => gb.Company);
+                Console.WriteLine($"Company:{companyCds.Key}");
+                foreach (var cd in companyCds)
+                {
+                    Console.WriteLine(cd.Title);
+                }
+                Console.WriteLine();
             }
 
             // Aggregatsmethoden
 
             PrintCaption("Kosten aller Polydor Titel!");
 
-            double cost = -1;
+            double cost = allCds.Where(w => w.Company == "Polydor").Sum(s => s.Price);
             Console.WriteLine("Kosten von Polydor Titel: {0:f2}\n", cost);
 
             //Beispiel: Selektiere die Anzahl der Titel und deren Durchschnittspreis je Land (Country) in ein anonymes Objekt
@@ -100,28 +104,28 @@ namespace ConsoleLinqExercises
             //Sortiert nach Country
             PrintCaption("Titelanzahl und Durchschnittspreis je Land:");
 
-            //var result3Query = from cd in _controller.Cds
-            //    group cd by cd.Country
-            //    into countryCds
-            //    orderby countryCds.First().Country
-            //    select new
-            //    {
-            //        Country = countryCds.Key,
-            //        TitleCount = countryCds.Count(),
-            //        AvgPrice = countryCds.Average(cd => cd.Price)
-            //    };
+            var result3Query = from cd in _controller.Cds
+                               group cd by cd.Country
+                into countryCds
+                               orderby countryCds.First().Country
+                               select new
+                               {
+                                   Country = countryCds.Key,
+                                   TitleCount = countryCds.Count(),
+                                   AvgPrice = countryCds.Average(cd => cd.Price)
+                               };
 
-            var resultAverageCountAndPricePerCountry = default(IEnumerable<Object>);
+            var resultAverageCountAndPricePerCountry = result3Query;
 
             foreach (var item in resultAverageCountAndPricePerCountry)
             {
-                throw  new NotImplementedException();
+                Console.WriteLine($"Land: {item.Country,-10} - Anzahl der Titel: {item.TitleCount,4} - Durch.Preis: {item.AvgPrice:f2}");
             }
 
             //Überladene Where Methode mit zwei Parameter (Element und Index des Elements in der Collection)
             int[] numbers = { 1, 22, 34, 45, 22, 67, 78, 89, 90, 101 };
 
-            var eachSecondNumber = default(IEnumerable<int>);
+            var eachSecondNumber = numbers
             PrintResult("Jede zweite Zahl...", eachSecondNumber);
 
             //Es soll eine Liste mit: CD-Title, Company-Name, Company-Director ausgegeben werden
