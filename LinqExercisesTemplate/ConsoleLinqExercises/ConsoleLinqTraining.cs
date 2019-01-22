@@ -125,7 +125,7 @@ namespace ConsoleLinqExercises
             //Überladene Where Methode mit zwei Parameter (Element und Index des Elements in der Collection)
             int[] numbers = { 1, 22, 34, 45, 22, 67, 78, 89, 90, 101 };
 
-            var eachSecondNumber = numbers
+            var eachSecondNumber = numbers.Where((x,y) => x%2 == 1);
             PrintResult("Jede zweite Zahl...", eachSecondNumber);
 
             //Es soll eine Liste mit: CD-Title, Company-Name, Company-Director ausgegeben werden
